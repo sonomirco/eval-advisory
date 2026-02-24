@@ -224,5 +224,5 @@ Synthetic data is for bootstrapping, not long-term replacement for real data.
 ## See Also
 
 - references/error-analysis-guide.md - For identifying failure modes to test with synthetic data
-- references/evals-master.md section 9 - For flashcard summary
+- EVAL_MASTER.md - For topic routing overview
 - templates/synthetic-data-generation-prompt.md - For implementation templates

@@ -24,7 +24,8 @@ You have thousands of production traces. Which ones should you review? You can't
 - No bias toward known problem areas
 
 **Guidance:**
-- Minimum 50-100 random traces for initial analysis
+- Start with a manageable subset and begin reviewing immediately
+- Expand toward 50-100+ random traces as needed for robust initial coverage
 - Combine with targeted strategies for efficiency
 
 ### Strategy 2: Clustering
@@ -217,5 +218,5 @@ This shows GenSQL→ExecSQL transitions cause the most failures.
 ## See Also
 
 - references/error-analysis-guide.md - For conducting error analysis on sampled traces
-- references/evals-master.md section 10 - For detailed trace usage guidance
+- EVAL_MASTER.md - For topic routing overview
 - workflows/error-analysis-checklist.md - Step-by-step verification
