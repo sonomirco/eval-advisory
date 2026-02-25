@@ -1,6 +1,6 @@
 ---
 name: eval-advisor
-description: Advise and support AI eval brainstorming, learning, design, development, and review; including error analysis, evaluator strategy, judge validation, RAG/agentic evaluation, CI/CD monitoring, and quality/cost improvement.
+description: End-to-end advisory skill for AI evaluation in LLM applications. Use when users ask about "eval strategy", "error analysis", "LLM judge", "RAG evaluation", "agent debugging", "CI/CD evals", "human review", "rubric alignment", or "quality/cost optimization". Key capabilities include brainstorming and learning support, evaluator design and selection, judge validation and monitoring, trace sampling, failure-taxonomy development, and workflow/template-based execution.
 allowed-tools: Read, Grep, Glob
 context: inline
 ---
