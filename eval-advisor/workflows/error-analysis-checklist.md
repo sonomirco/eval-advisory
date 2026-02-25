@@ -21,6 +21,8 @@ Use this checklist before designing evaluators.
 
 - [ ] Open notes clustered into binary failure modes
 - [ ] Category definitions and boundaries clarified
+- [ ] Each failure mode has both inclusion and exclusion rules
+- [ ] Overlap audit completed for nearest-neighbor/confusable modes
 - [ ] Human/domain review completed
 
 ## Re-Coding and Quantification
@@ -36,6 +38,14 @@ Use this checklist before designing evaluators.
 - [ ] Taxonomy revised where overlaps or gaps were found
 - [ ] If one glaring failure dominates early review, applied fix before scaling evaluator build
 - [ ] High-priority modes received targeted exhaustive re-labeling (not first-failure only)
+
+## Completion Gate (Required)
+
+Cannot close error analysis without all items below:
+
+- [ ] Binary trace-by-failure-mode matrix completed for the analyzed trace set
+- [ ] Prevalence table completed with explicit denominators
+- [ ] Overlap audit completed and unresolved overlaps documented
 
 ## Output Quality Gate
 

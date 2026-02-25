@@ -15,7 +15,7 @@ Load this file with `eval-advisor/SKILL.md` for every request.
 | Workflow Domain | Primary Reference | Workflow Checklist | Template (Only if Artifact Needed) | Secondary References | Execution Focus |
 |---|---|---|---|---|---|
 | 1. Error Analysis | `eval-advisor/references/error-analysis-guide.md` | `eval-advisor/workflows/error-analysis-checklist.md` | `eval-advisor/templates/failure-taxonomy-template.md` | `eval-advisor/references/trace-analysis-guide.md`, `eval-advisor/references/synthetic-data-patterns.md` | Trace-first discovery, open/axial coding, quantification, saturation |
-| 2. Eval Design Decisions | `eval-advisor/references/evaluator-types-guide.md` | `eval-advisor/workflows/eval-design-decision-tree.md` | N/A | `eval-advisor/references/anti-patterns-extended.md` | Choose assertions vs judge vs guardrails after failures are known |
+| 2. Eval Design Decisions | `eval-advisor/references/evaluator-types-guide.md` | `eval-advisor/workflows/eval-design-decision-tree.md` | `eval-advisor/templates/spec-conformance-audit-template.md` | `eval-advisor/references/anti-patterns-extended.md` | Choose assertions vs judge vs guardrails after failures are known |
 | 3. Collaborative Annotation | `eval-advisor/references/collaborative-evaluation-practices.md` | `eval-advisor/workflows/collaborative-annotation-checklist.md` | `eval-advisor/templates/rubric-alignment-template.md` | N/A | Independent labeling, alignment loop, rubric versioning |
 | 4. Judge Build/Validation | `eval-advisor/references/judge-validation-reference.md` | `eval-advisor/workflows/judge-validation-checklist.md` | `eval-advisor/templates/judge-prompt-template.md` | N/A | Train/dev/test discipline, confusion matrix, TPR/TNR |
 | 5. Judge Monitoring/Drift | `eval-advisor/references/judge-uncertainty-and-calibration.md` | `eval-advisor/workflows/judge-monitoring-and-revalidation-checklist.md` | `eval-advisor/templates/judge-monitoring-report-template.md` | N/A | Corrected production estimates, intervals, drift revalidation |
@@ -25,7 +25,7 @@ Load this file with `eval-advisor/SKILL.md` for every request.
 | 9. Human Review Operations | `eval-advisor/references/review-interface-and-sampling-guide.md` | `eval-advisor/workflows/human-review-operations-checklist.md` | `eval-advisor/templates/review-queue-spec-template.md` | N/A | Queue design, sampling policy, feedback-to-engineering loop |
 | 10. CI/CD Eval Operations | `eval-advisor/references/ci-cd-evaluation-guide.md` | `eval-advisor/workflows/ci-cd-evaluation-checklist.md` | `eval-advisor/templates/golden-dataset-entry-template.md` | N/A | Regression gates, monitoring linkage, lifecycle updates |
 | 11. Improvement & Cost Optimization | `eval-advisor/references/improvement-playbook.md` | `eval-advisor/workflows/improvement-experiment-checklist.md` | `eval-advisor/templates/improvement-experiment-template.md` | N/A | Hypothesis-driven fixes and cost/quality tradeoffs |
-| 12. Synthetic Data Generation | `eval-advisor/references/synthetic-data-patterns.md` | N/A | `eval-advisor/templates/synthetic-data-generation-prompt.md` | N/A | Structured tuple-first generation with realism filters |
+| 12. Synthetic Data Generation | `eval-advisor/references/synthetic-data-patterns.md` | N/A | `eval-advisor/templates/synthetic-data-generation-prompt.md`, `eval-advisor/templates/synthetic-data-quality-gate-template.md` | N/A | Structured tuple-first generation with realism filters |
 
 ## Workflow Use Playbooks
 
@@ -44,7 +44,7 @@ When user needs error analysis:
 ### 2) Eval Design Decisions
 When user asks what evaluator to build:
 1. Block if error analysis is missing.
-2. Check prompt/spec fixes before evaluator investment.
+2. Run spec-conformance audit (`templates/spec-conformance-audit-template.md`) before evaluator investment.
 3. Choose among assertions, judges, and guardrails using cost/risk.
 
 ### 3) Collaborative Annotation and Rubric Alignment
@@ -111,7 +111,8 @@ When user asks how to improve system performance after eval findings:
 When user needs bootstrap test data:
 1. Use structured dimensions and tuple-first generation.
 2. Add adversarial/distractor cases and filter for realism.
-3. Replace synthetic-heavy sets with real traces over time.
+3. Run keep/drop quality gate (`templates/synthetic-data-quality-gate-template.md`) with explicit coverage reporting.
+4. Replace synthetic-heavy sets with real traces over time.
 
 ## Guardrails
 

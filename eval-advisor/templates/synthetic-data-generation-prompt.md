@@ -164,6 +164,17 @@ for query in hard_queries:
         validated_queries.append(query)
 ```
 
+### Step 4: Run Human Quality Gate (Required)
+
+Before finalizing the synthetic dataset:
+
+1. Mark each candidate as `keep` or `drop`
+2. Record a concrete drop reason
+3. Verify tuple intent and constraints are preserved in each kept query
+4. Compute per-dimension kept coverage with explicit denominators
+
+Use `templates/synthetic-data-quality-gate-template.md`.
+
 ## Best Practices
 
 1. **Define dimensions relevant to your application** - What variations matter for your use case?
@@ -171,8 +182,10 @@ for query in hard_queries:
 3. **Generate in two steps** - Tuples first, then natural language
 4. **Filter aggressively** - Keep only challenging, diverse cases
 5. **Validate with your system** - Ensure queries actually work as intended
-6. **Iterate on the process** - Improve prompts based on validation results
+6. **Run a documented keep/drop quality gate** - Keep the audit table
+7. **Iterate on the process** - Improve prompts based on validation results
 
 See also:
 - references/synthetic-data-patterns.md - Detailed methodology and patterns
 - references/error-analysis-guide.md - For identifying failure modes to test
+- templates/synthetic-data-quality-gate-template.md - Keep/drop and coverage artifact

@@ -128,6 +128,12 @@ Generate 100 candidates but only keep the 30 that:
 - Challenge common model weaknesses
 - Include tricky edge cases
 
+**Required logging discipline:**
+- Track every candidate as `keep` or `drop` (no silent deletions)
+- Record drop reasons (duplicate, unrealistic phrasing, constraint conflict, too-easy, out-of-scope)
+- Record whether each kept query preserves tuple intent and constraints
+- Use `templates/synthetic-data-quality-gate-template.md`
+
 ### Step 6: Validate Scenario Coverage
 
 Ensure your generated data actually triggers the scenarios you intend to test.
@@ -142,6 +148,11 @@ Ensure your generated data actually triggers the scenarios you intend to test.
 2. Run through your system
 3. Verify expected behaviors occur
 4. Remove cases that don't trigger intended scenarios
+
+**Coverage checks (required):**
+- Compute per-dimension coverage with explicit denominators
+- Verify contradictory/ambiguous scenarios are intentionally represented
+- Verify kept set is not dominated by one style/intent bucket
 
 ## Quality Guidelines
 
@@ -169,6 +180,7 @@ Ground synthetic data in actual system limitations and data:
 - Availability windows and capacity limits
 - Geographic or domain-specific restrictions
 - Data format requirements
+- Feasibility constraints (avoid impossible combinations unless testing contradiction handling)
 
 ### Start Simple, Then Add Complexity
 
@@ -177,6 +189,10 @@ Begin with straightforward test cases before adding nuance.
 - Establishes a baseline
 - Makes debugging easier
 - Add complexity iteratively
+
+### Enforce a Quality Gate Artifact
+
+Do not treat generation output as final dataset. Always run a human-reviewed quality gate pass and keep the audit table.
 
 ## Common Patterns by Application Type
 
@@ -226,3 +242,4 @@ Synthetic data is for bootstrapping, not long-term replacement for real data.
 - references/error-analysis-guide.md - For identifying failure modes to test with synthetic data
 - EVAL_MASTER.md - For topic routing overview
 - templates/synthetic-data-generation-prompt.md - For implementation templates
+- templates/synthetic-data-quality-gate-template.md - For keep/drop review and coverage audit

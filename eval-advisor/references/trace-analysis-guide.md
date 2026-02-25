@@ -173,6 +173,39 @@ Two main approaches:
 - More representative of actual usage
 - Better for regression testing
 
+## Handling Conflicting or Impossible Constraints
+
+Some user requests contain constraints that cannot be satisfied together. These should be treated as first-class evaluation scenarios.
+
+### Typical conflict pattern
+
+- User asks for constraints that are jointly infeasible (for example: strict dietary rule + incompatible required ingredients)
+
+### Clarification policy (define explicitly)
+
+Pick one policy and evaluate against it:
+
+- **Clarify-first policy:** assistant asks a targeted follow-up question to resolve contradiction
+- **Best-effort policy:** assistant states the conflict and proposes a safe nearest-feasible alternative without asking follow-up
+
+### Labeling guidance
+
+For conflict traces, add a binary check:
+
+- `handled_conflict_per_policy = 1/0`
+
+Suggested failure labels if policy is violated:
+
+- `missed_constraint_conflict`
+- `incorrect_unstated_override` (assistant silently ignores one constraint)
+- `unnecessary_clarification` (asks follow-up when policy expects direct resolution)
+
+### Sampling guidance
+
+- Intentionally include contradiction cases in synthetic generation and production sampling
+- Include both obvious and subtle conflicts
+- Ensure conflict coverage is tracked as a distinct scenario bucket
+
 ## Agentic Workflow Analysis
 
 For agent-based systems, additional considerations:

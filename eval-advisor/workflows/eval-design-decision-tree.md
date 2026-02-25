@@ -7,10 +7,14 @@ Use this workflow to choose the minimum-cost evaluator that still gives reliable
 - [ ] Confirm observed failure modes exist from real traces
 - [ ] If not complete: stop and run `workflows/error-analysis-checklist.md`
 
-## Gate 2: Prompt/Spec Fix First?
+## Gate 2: Specification Conformance Gate (Required)
 
-- [ ] Check whether failure is an unstated preference or missing instruction
-- [ ] If yes: fix prompt/spec before adding evaluator
+- [ ] Run a prompt/spec conformance audit against real traces using `templates/spec-conformance-audit-template.md`
+- [ ] Measure required-contract adherence with explicit denominator (`n_conformant / n_total`)
+- [ ] Classify each failure as either:
+  - spec/ambiguity failure (missing or unclear instruction)
+  - generalization failure (instruction was clear but behavior still missed)
+- [ ] If spec/ambiguity failures dominate, fix prompt/spec and rerun conformance before adding evaluator
 
 ## Gate 3: Failure Type
 
@@ -50,3 +54,4 @@ If not blocking:
 
 - Concepts: `references/evaluator-types-guide.md`
 - Anti-patterns: `references/anti-patterns-extended.md`
+- Conformance artifact: `templates/spec-conformance-audit-template.md`

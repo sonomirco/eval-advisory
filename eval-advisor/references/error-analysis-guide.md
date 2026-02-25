@@ -83,6 +83,8 @@ You can use an LLM to help with initial clustering:
 
 **Goal:** Convert taxonomy into measurable data for prioritization
 
+**Required for completion:** Error analysis is not complete until this stage is done for the analyzed trace set.
+
 **Process:**
 1. Add one binary column per failure mode (`1` present, `0` absent)
 2. Re-code each trace against each failure mode definition
@@ -113,7 +115,8 @@ You can use an LLM to help with initial clustering:
 1. Continue reviewing and categorizing new traces
 2. Add new categories if distinct patterns emerge
 3. Expand existing category descriptions as understanding deepens
-4. Stop when you reach theoretical saturation
+4. Run overlap checks on confusable failure modes and refine inclusion/exclusion boundaries
+5. Stop when you reach theoretical saturation
 
 **Two-pass strategy (recommended):**
 - Pass A: Use first-failure labeling for fast broad discovery
